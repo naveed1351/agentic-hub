@@ -19,7 +19,8 @@ REQUIRED = [
 for var in REQUIRED:  
     if var not in os.environ:  
         raise EnvironmentError(f"Missing {var} in environment or .env file.")  
-  
+
+#  Set up Azure OpenAI service parameters  
 AZURE_KEY = os.environ["AZURE_OPENAI_API_KEY"]  
 AZURE_ENDPOINT = os.environ["AZURE_OPENAI_ENDPOINT"]  
 AZURE_DEPLOYMENT = os.environ["AZURE_OPENAI_DEPLOYMENT_NAME"]  
@@ -46,7 +47,7 @@ async def function_invocation_filter(context: FunctionInvocationContext, next):
   
 kernel.add_filter("function_invocation", function_invocation_filter)  
   
-# 5. Define agents  
+# 5. Define the billing agents  
 billing_agent = ChatCompletionAgent(  
     service=azure_service,  
     name="BillingAgent",  
@@ -58,7 +59,7 @@ billing_agent = ChatCompletionAgent(
         "Your goal is to clearly communicate and resolve issues specifically about payments and charges."  
     ),  
 )  
-  
+  # Define the refund agent
 refund_agent = ChatCompletionAgent(  
     service=azure_service,  
     name="RefundAgent",  
@@ -70,7 +71,7 @@ refund_agent = ChatCompletionAgent(
         "Your goal is to assist users clearly and empathetically to successfully resolve their refund-related concerns."  
     ),  
 )  
-  
+  # define the triage agent
 triage_agent = ChatCompletionAgent(  
     service=azure_service,  
     kernel=kernel,  
