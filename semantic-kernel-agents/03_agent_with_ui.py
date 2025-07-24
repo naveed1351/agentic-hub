@@ -3,6 +3,8 @@ import semantic_kernel as sk
 from semantic_kernel.connectors.ai.open_ai import AzureChatCompletion
 from semantic_kernel.functions import kernel_function
 
+#need to install the libraries first
+
 from semantic_kernel.agents import ChatCompletionAgent, ChatHistoryAgentThread
 # Example Native Plugin (Tool)
 class WeatherPlugin:
