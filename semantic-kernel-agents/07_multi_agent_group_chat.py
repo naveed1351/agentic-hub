@@ -15,7 +15,7 @@ utilizes An Art Director Chat Completion Agent along with a Copy Writer Chat
 Completion Agent to complete a task.
 """
 
-
+# create kernel with chat completion service:
 def _create_kernel_with_chat_completion(service_id: str) -> Kernel:
     kernel = Kernel()
     kernel.add_service(AzureChatCompletion(service_id=service_id))
