@@ -3,7 +3,10 @@ project_endpoint = "your-project-endpoint"
 model = "your-model-name"  
 deep_research_model = "o3-deep-research"  
 bing_grounding_connection_name = "bing-with-grounding-search-connection-name"  
-  
+
+#import libraries
+# 
+# Note: I'm using Default Credentials, you can change that to managed identity by providing client ID or objet ID.  
 from azure.identity import DefaultAzureCredential  
 from azure.ai.projects import AIProjectClient  # Hypothetical import - please replace with the actual SDK if different  
 from azure.ai.agents.models import DeepResearchTool, MessageRole
